@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/cktf/terraform-hcloud-wireguard/compare/1.0.1...1.0.2) (2022-07-26)
+
+
+### Bug Fixes
+
+* add floating ip location and name ([811137a](https://github.com/cktf/terraform-hcloud-wireguard/commit/811137a65a39d285fc33a6d4cbcbdabd64c494e8))
+
 ## [1.0.1](https://github.com/cktf/terraform-hcloud-wireguard/compare/1.0.0...1.0.1) (2022-07-26)
 
 
