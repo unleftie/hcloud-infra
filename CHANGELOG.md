@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/cktf/terraform-hcloud-wireguard/compare/1.0.0...1.0.1) (2022-07-26)
+
+
+### Bug Fixes
+
+* change dependency versions criteria ([38f2882](https://github.com/cktf/terraform-hcloud-wireguard/commit/38f288273df4630250a10022a0ad2d3aafd79ef0))
+
 # 1.0.0 (2022-07-19)
 
 
