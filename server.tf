@@ -24,7 +24,9 @@ resource "hcloud_server" "this" {
 }
 
 resource "hcloud_floating_ip" "this" {
-  type = "ipv4"
+  type          = "ipv4"
+  name          = var.name
+  home_location = var.location
 }
 
 resource "hcloud_floating_ip_assignment" "this" {
