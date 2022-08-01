@@ -1,10 +1,5 @@
-output "configs" {
-  value = { for idx, val in var.peers : val => templatefile("${path.module}/templates/peer.conf", {
-    private_key       = wireguard_asymmetric_key.peers[idx].private_key
-    private_idx       = idx
-    server_public_key = wireguard_asymmetric_key.server.public_key
-    server_public_ip  = hcloud_floating_ip.this.ip_address
-  }) }
+output "ipv4_address" {
+  value       = hcloud_server.server1.ipv4_address
   sensitive   = false
-  description = "Wireguard Configs"
+  description = "Public ipv4 address"
 }

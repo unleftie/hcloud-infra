@@ -1,34 +1,70 @@
-variable "name" {
+variable "service_name" {
   type        = string
-  default     = ""
+  default     = "test"
   sensitive   = false
-  description = "Wireguard Name"
+  description = "Service Name"
 }
 
-variable "type" {
+variable "server_name" {
   type        = string
-  default     = "cx11"
+  default     = "server1"
   sensitive   = false
-  description = "Wireguard Type"
+  description = "Server Name"
 }
 
-variable "location" {
+variable "server_image" {
+  type        = string
+  default     = "debian-11"
+  sensitive   = false
+  description = "Server Image"
+}
+
+variable "server_type" {
+  type        = string
+  default     = "cpx11"
+  sensitive   = false
+  description = "Server Type"
+}
+
+variable "server_location" {
   type        = string
   default     = "nbg1"
   sensitive   = false
-  description = "Wireguard Location"
+  description = "Server Location"
+}
+
+variable "vpn_port" {
+  type        = string
+  default     = "5200"
+  sensitive   = false
+  description = "VPN UDP Port"
+}
+
+variable "ssh_public_key_path1" {
+  type        = string
+  default     = "~/.ssh/id_rsa.pub"
+  sensitive   = true
+  description = "Name of existing SSH public key file (e.g. id_rsa.pub)"
+}
+
+variable "network_cidr_block1" {
+  type      = string
+  default   = "10.10.0.0/16"
+  sensitive = false
+}
+
+variable "subnet_cidr_block1" {
+  type      = string
+  default   = "10.10.10.0/24"
+  sensitive = false
 }
 
 variable "labels" {
-  type        = map(string)
-  default     = {}
+  type = map(string)
+  default = {
+    env = "test"
+    org = "test"
+  }
   sensitive   = false
-  description = "Wireguard Labels"
-}
-
-variable "peers" {
-  type        = list(string)
-  default     = []
-  sensitive   = false
-  description = "Wireguard Peers"
+  description = "Labels for all resources"
 }
