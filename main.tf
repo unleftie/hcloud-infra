@@ -13,7 +13,7 @@ resource "hcloud_server" "server1" {
 
   public_net {
     ipv4_enabled = true
-    ipv6_enabled = false
+    ipv6_enabled = true
   }
 
   depends_on = [
