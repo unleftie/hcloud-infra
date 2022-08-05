@@ -40,6 +40,12 @@ variable "vpn_port" {
   description = "VPN UDP Port"
 }
 
+variable "personal_ip1" {
+  type      = string
+  default   = "10.10.10.1/32"
+  sensitive = false
+}
+
 variable "ssh_public_key_path1" {
   type        = string
   default     = "~/.ssh/id_rsa.pub"

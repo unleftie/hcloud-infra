@@ -32,3 +32,22 @@ resource "hcloud_firewall" "vpn" {
     port       = var.vpn_port
   }
 }
+
+resource "hcloud_firewall" "web" {
+  name   = "${var.service_name}-firewall-web"
+  labels = var.labels
+
+  rule {
+    direction  = "in"
+    protocol   = "tcp"
+    source_ips = [var.personal_ip1]
+    port       = "80"
+  }
+
+  rule {
+    direction  = "in"
+    protocol   = "tcp"
+    source_ips = [var.personal_ip1]
+    port       = "443"
+  }
+}
