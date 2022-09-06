@@ -51,3 +51,22 @@ resource "hcloud_firewall" "web" {
     port       = "443"
   }
 }
+
+resource "hcloud_firewall" "knocking" {
+  name   = "${var.service_name}-firewall-knocking"
+  labels = var.labels
+
+  rule {
+    direction  = "in"
+    protocol   = "tcp"
+    source_ips = ["0.0.0.0/0"]
+    port       = var.knocking_port
+  }
+
+  rule {
+    direction  = "in"
+    protocol   = "udp"
+    source_ips = ["0.0.0.0/0"]
+    port       = var.knocking_port
+  }
+}

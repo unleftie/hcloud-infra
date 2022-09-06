@@ -5,9 +5,9 @@ variable "service_name" {
   description = "Service Name"
 }
 
-variable "server_name" {
+variable "server_name2" {
   type        = string
-  default     = "server1"
+  default     = "server2"
   sensitive   = false
   description = "Server Name"
 }
@@ -38,6 +38,13 @@ variable "vpn_port" {
   default     = "5200"
   sensitive   = false
   description = "VPN UDP Port"
+}
+
+variable "knocking_port" {
+  type        = string
+  default     = "5200"
+  sensitive   = true
+  description = "Knocking Port"
 }
 
 # variable "personal_ip1" {
