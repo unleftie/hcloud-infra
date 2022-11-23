@@ -2,35 +2,27 @@ variable "service_name" {
   type        = string
   default     = "test"
   sensitive   = false
-  description = "Service Name"
-}
-
-variable "server_name2" {
-  type        = string
-  default     = "server2"
-  sensitive   = false
-  description = "Server Name"
+  description = "Default Service/Org Name"
 }
 
 variable "server_image" {
   type        = string
   default     = "debian-11"
   sensitive   = false
-  description = "Server Image"
+  description = "Default Server Image"
 }
 
-variable "server_type" {
-  type        = string
-  default     = "cpx11"
-  sensitive   = false
-  description = "Server Type"
+variable "server_name2" {
+  type      = string
+  default   = "server2"
+  sensitive = false
 }
 
 variable "server_location" {
   type        = string
   default     = "nbg1"
   sensitive   = false
-  description = "Server Location"
+  description = "Default Server Location"
 }
 
 variable "vpn_port" {
@@ -47,16 +39,10 @@ variable "knocking_port" {
   description = "Knocking Port"
 }
 
-# variable "personal_ip1" {
-#   type      = string
-#   default   = "10.10.10.1/32"
-#   sensitive = false
-# }
-
 variable "ssh_public_key_path1" {
   type        = string
   default     = "~/.ssh/id_rsa.pub"
-  sensitive   = true
+  sensitive   = false
   description = "Name of existing SSH public key file (e.g. id_rsa.pub)"
 }
 

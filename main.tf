@@ -1,11 +1,19 @@
 resource "hcloud_server" "server2" {
-  name         = var.server_name2
-  server_type  = var.server_type
-  location     = var.server_location
-  image        = var.server_image
-  labels       = var.labels
-  ssh_keys     = [hcloud_ssh_key.ssh1.id]
-  firewall_ids = [hcloud_firewall.ssh.id, hcloud_firewall.icmp.id, hcloud_firewall.vpn.id, hcloud_firewall.knocking.id]
+  name        = var.server_name2
+  server_type = "cpx21"
+  location    = var.server_location
+  image       = var.server_image
+  labels      = var.labels
+  ssh_keys    = [hcloud_ssh_key.ssh1.id]
+  keep_disk   = true
+
+  firewall_ids = [
+    hcloud_firewall.internal.id,
+    hcloud_firewall.ssh.id,
+    hcloud_firewall.icmp.id,
+    hcloud_firewall.vpn.id,
+    hcloud_firewall.knocking.id,
+  ]
 
   network {
     network_id = hcloud_network.network1.id
