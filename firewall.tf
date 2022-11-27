@@ -90,10 +90,16 @@ resource "hcloud_firewall" "web" {
   }
 }
 
-resource "hcloud_firewall" "knocking" {
-  name   = "${var.service_name}-firewall-knocking"
+resource "hcloud_firewall" "ssh_knocking" {
+  name   = "${var.service_name}-firewall-ssh-knocking"
   labels = var.labels
 
+  rule {
+    direction  = "in"
+    protocol   = "tcp"
+    source_ips = ["0.0.0.0/0"]
+    port       = "22"
+  }
   rule {
     direction  = "in"
     protocol   = "tcp"
