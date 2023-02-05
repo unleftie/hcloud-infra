@@ -1,4 +1,41 @@
 
+resource "hcloud_firewall" "all" {
+  name   = "${var.service_name}-firewall-all"
+  labels = var.labels
+
+  rule {
+    direction  = "in"
+    protocol   = "icmp"
+    source_ips = ["0.0.0.0/0"]
+  }
+
+  rule {
+    direction  = "in"
+    protocol   = "tcp"
+    port       = "any"
+    source_ips = ["0.0.0.0/0"]
+  }
+
+  rule {
+    direction  = "in"
+    protocol   = "udp"
+    port       = "any"
+    source_ips = ["0.0.0.0/0"]
+  }
+
+  rule {
+    direction  = "in"
+    protocol   = "gre"
+    source_ips = ["0.0.0.0/0"]
+  }
+
+  rule {
+    direction  = "in"
+    protocol   = "esp"
+    source_ips = ["0.0.0.0/0"]
+  }
+}
+
 resource "hcloud_firewall" "internal" {
   name   = "${var.service_name}-firewall-internal"
   labels = var.labels
@@ -59,6 +96,18 @@ resource "hcloud_firewall" "ssh" {
   }
 }
 
+# resource "hcloud_firewall" "vault" {
+#   name   = "${var.service_name}-firewall-vault"
+#   labels = var.labels
+
+#   rule {
+#     direction  = "in"
+#     protocol   = "tcp"
+#     source_ips = ["0.0.0.0/0"]
+#     port       = "8200"
+#   }
+# }
+
 resource "hcloud_firewall" "vpn" {
   name   = "${var.service_name}-firewall-vpn"
   labels = var.labels
@@ -96,49 +145,17 @@ resource "hcloud_firewall" "cloudflare" {
   labels = var.labels
 
   rule {
-    direction = "in"
-    protocol  = "tcp"
-    source_ips = [
-      "103.21.244.0/22",
-      "103.22.200.0/22",
-      "103.31.4.0/22",
-      "104.16.0.0/13",
-      "104.24.0.0/14",
-      "108.162.192.0/18",
-      "131.0.72.0/22",
-      "141.101.64.0/18",
-      "162.158.0.0/15",
-      "172.64.0.0/13",
-      "173.245.48.0/20",
-      "188.114.96.0/20",
-      "190.93.240.0/20",
-      "197.234.240.0/22",
-      "198.41.128.0/17",
-    ]
-    port = "80"
+    direction  = "in"
+    protocol   = "tcp"
+    source_ips = split("\n", data.http.cloudflare_ips.response_body)
+    port       = "80"
   }
 
   rule {
-    direction = "in"
-    protocol  = "tcp"
-    source_ips = [
-      "103.21.244.0/22",
-      "103.22.200.0/22",
-      "103.31.4.0/22",
-      "104.16.0.0/13",
-      "104.24.0.0/14",
-      "108.162.192.0/18",
-      "131.0.72.0/22",
-      "141.101.64.0/18",
-      "162.158.0.0/15",
-      "172.64.0.0/13",
-      "173.245.48.0/20",
-      "188.114.96.0/20",
-      "190.93.240.0/20",
-      "197.234.240.0/22",
-      "198.41.128.0/17",
-    ]
-    port = "443"
+    direction  = "in"
+    protocol   = "tcp"
+    source_ips = split("\n", data.http.cloudflare_ips.response_body)
+    port       = "443"
   }
 }
 
