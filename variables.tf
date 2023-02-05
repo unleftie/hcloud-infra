@@ -18,6 +18,12 @@ variable "server_name2" {
   sensitive = false
 }
 
+variable "server_name3" {
+  type      = string
+  default   = "server3"
+  sensitive = false
+}
+
 variable "server_location" {
   type        = string
   default     = "nbg1"
@@ -39,7 +45,7 @@ variable "knocking_port" {
   description = "Knocking Port"
 }
 
-variable "ssh_public_key_path1" {
+variable "ssh_public_key1_path" {
   type        = string
   default     = "~/.ssh/id_rsa.pub"
   sensitive   = false
