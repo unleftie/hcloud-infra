@@ -96,18 +96,6 @@ resource "hcloud_firewall" "ssh" {
   }
 }
 
-# resource "hcloud_firewall" "vault" {
-#   name   = "${var.service_name}-firewall-vault"
-#   labels = var.labels
-
-#   rule {
-#     direction  = "in"
-#     protocol   = "tcp"
-#     source_ips = ["0.0.0.0/0"]
-#     port       = "8200"
-#   }
-# }
-
 resource "hcloud_firewall" "vpn" {
   name   = "${var.service_name}-firewall-vpn"
   labels = var.labels

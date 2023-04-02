@@ -1,6 +1,7 @@
 output "ipv4_address" {
   value = [
     hcloud_server.server2.ipv4_address,
+    hcloud_server.server3.ipv4_address,
   ]
   sensitive   = false
   description = "Public ipv4 address's'"
@@ -9,6 +10,7 @@ output "ipv4_address" {
 output "ipv6_address" {
   value = [
     hcloud_server.server2.ipv6_address,
+    hcloud_server.server3.ipv6_address,
   ]
   sensitive   = false
   description = "Public ipv6 address's'"
