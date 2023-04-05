@@ -1,4 +1,5 @@
 resource "hcloud_server" "server2" {
+  count       = 1
   name        = var.server_name2
   server_type = "cpx21"
   location    = var.server_location
@@ -37,6 +38,7 @@ resource "hcloud_server" "server2" {
 }
 
 resource "hcloud_server" "server3" {
+  count       = 0
   name        = var.server_name3
   server_type = "cx21"
   location    = var.server_location
