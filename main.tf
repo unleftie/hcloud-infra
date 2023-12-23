@@ -51,6 +51,7 @@ resource "hcloud_server" "server3" {
     hcloud_firewall.internal.id,
     hcloud_firewall.icmp.id,
     hcloud_firewall.ssh.id,
+    hcloud_firewall.web.id,
   ]
 
   network {
