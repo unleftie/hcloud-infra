@@ -3,7 +3,7 @@ resource "hcloud_server" "server2" {
   name        = var.server_name2
   server_type = "cpx21"
   location    = var.server_location
-  image       = var.server_image
+  image       = "debian-11"
   labels      = var.labels
   ssh_keys    = [hcloud_ssh_key.ssh1.id]
   keep_disk   = true
@@ -38,13 +38,13 @@ resource "hcloud_server" "server2" {
 }
 
 resource "hcloud_server" "server3" {
-  count       = 0
+  count       = 1
   name        = var.server_name3
-  server_type = "cx21"
+  server_type = "cax11"
   location    = var.server_location
-  image       = var.server_image
+  image       = "debian-12"
   labels      = var.labels
-  ssh_keys    = [hcloud_ssh_key.ssh1.id]
+  ssh_keys    = [hcloud_ssh_key.ssh.id]
   keep_disk   = true
 
   firewall_ids = [
