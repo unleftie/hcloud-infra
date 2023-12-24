@@ -15,6 +15,10 @@ variable "server_name3" {
   type = string
 }
 
+variable "server_name4" {
+  type = string
+}
+
 variable "server_location" {
   type        = string
   default     = "nbg1"
