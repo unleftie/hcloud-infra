@@ -7,10 +7,6 @@ variable "service_name" {
   description = "Default Service/Org Name"
 }
 
-variable "server_name2" {
-  type = string
-}
-
 variable "server_name3" {
   type = string
 }
@@ -36,11 +32,6 @@ variable "knocking_port" {
   default     = "5200"
   sensitive   = true
   description = "Knocking Port"
-}
-
-variable "ssh_public_key_old_path" {
-  type        = string
-  description = "Name of old SSH public key file (e.g. id_rsa.pub)"
 }
 
 variable "ssh_public_key_path" {
