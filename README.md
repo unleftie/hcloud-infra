@@ -5,7 +5,7 @@
 Add the required configurations to your terraform config file and install module using command bellow:
 
 ```sh
-git clone https://github.com/unleftie/terraform-hcloud-instance.git
+git clone https://github.com/denysrondaliev/terraform-hcloud-instance.git
 cd terraform-hcloud-instance/
 terraform init
 ```
