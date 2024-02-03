@@ -15,6 +15,10 @@ variable "server_name4" {
   type = string
 }
 
+variable "server_name5" {
+  type = string
+}
+
 variable "server_location" {
   type        = string
   default     = "nbg1"
@@ -36,7 +40,8 @@ variable "knocking_port" {
 
 variable "ssh_public_key_path" {
   type        = string
-  description = "Name of existing SSH public key file (e.g. id_rsa.pub)"
+  description = "Name of existing SSH public key file"
+  default     = "id_rsa.pub"
 }
 
 variable "network_cidr_block1" {
