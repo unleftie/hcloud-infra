@@ -68,25 +68,24 @@ resource "hcloud_server" "server4" {
   }
 }
 
-resource "hcloud_server" "server5" {
+resource "hcloud_server" "server6" {
   count       = 1
   name        = var.server_name5
   server_type = "cx11"
   location    = var.server_location
-  image       = "debian-12"
+  image       = data.hcloud_image.snapshot1.id
   labels      = var.labels
   ssh_keys    = data.hcloud_ssh_keys.this.ssh_keys.*.id
   keep_disk   = true
 
   firewall_ids = [
     hcloud_firewall.internal.id,
-    hcloud_firewall.ssh_knocking.id,
-    hcloud_firewall.web.id,
+    hcloud_firewall.ssh_knocking.id
   ]
 
   network {
     network_id = hcloud_network.network1.id
-    ip         = "10.80.80.5"
+    ip         = "10.80.80.6"
   }
 
   public_net {
@@ -99,6 +98,6 @@ resource "hcloud_server" "server5" {
   ]
 
   lifecycle {
-    ignore_changes = [ssh_keys, image, network]
+    ignore_changes = [ssh_keys, network]
   }
 }
