@@ -6,33 +6,33 @@ resource "hcloud_firewall" "all" {
   rule {
     direction  = "in"
     protocol   = "icmp"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
   }
 
   rule {
     direction  = "in"
     protocol   = "tcp"
     port       = "any"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
   }
 
   rule {
     direction  = "in"
     protocol   = "udp"
     port       = "any"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
   }
 
   rule {
     direction  = "in"
     protocol   = "gre"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
   }
 
   rule {
     direction  = "in"
     protocol   = "esp"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
   }
 }
 
@@ -80,7 +80,7 @@ resource "hcloud_firewall" "icmp" {
   rule {
     direction  = "in"
     protocol   = "icmp"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
   }
 }
 
@@ -91,7 +91,7 @@ resource "hcloud_firewall" "ssh" {
   rule {
     direction  = "in"
     protocol   = "tcp"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
     port       = "22"
   }
 }
@@ -103,7 +103,7 @@ resource "hcloud_firewall" "vpn" {
   rule {
     direction  = "in"
     protocol   = "udp"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
     port       = var.vpn_port
   }
 }
@@ -115,14 +115,14 @@ resource "hcloud_firewall" "web" {
   rule {
     direction  = "in"
     protocol   = "tcp"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
     port       = "80"
   }
 
   rule {
     direction  = "in"
     protocol   = "tcp"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
     port       = "443"
   }
 }
@@ -135,14 +135,14 @@ resource "hcloud_firewall" "cloudflare" {
   rule {
     direction  = "in"
     protocol   = "tcp"
-    source_ips = split("\n", data.http.cloudflare_ips.response_body)
+    source_ips = concat(split("\n", data.http.cloudflare_ips_v4.response_body), split("\n", data.http.cloudflare_ips_v6.response_body))
     port       = "80"
   }
 
   rule {
     direction  = "in"
     protocol   = "tcp"
-    source_ips = split("\n", data.http.cloudflare_ips.response_body)
+    source_ips = concat(split("\n", data.http.cloudflare_ips_v4.response_body), split("\n", data.http.cloudflare_ips_v6.response_body))
     port       = "443"
   }
 }
@@ -154,20 +154,20 @@ resource "hcloud_firewall" "ssh_knocking" {
   rule {
     direction  = "in"
     protocol   = "tcp"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
     port       = "22"
   }
   rule {
     direction  = "in"
     protocol   = "tcp"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
     port       = var.knocking_port
   }
 
   rule {
     direction  = "in"
     protocol   = "udp"
-    source_ips = ["0.0.0.0/0"]
+    source_ips = ["0.0.0.0/0", "::/0"]
     port       = var.knocking_port
   }
 }

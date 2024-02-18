@@ -10,6 +10,7 @@ resource "hcloud_server" "server3" {
 
   firewall_ids = [
     hcloud_firewall.internal.id,
+    hcloud_firewall.icmp.id,
     hcloud_firewall.ssh_knocking.id,
     hcloud_firewall.vpn.id,
   ]
@@ -21,7 +22,7 @@ resource "hcloud_server" "server3" {
 
   public_net {
     ipv4_enabled = true
-    ipv6_enabled = false
+    ipv6_enabled = true
   }
 
   depends_on = [
@@ -45,6 +46,7 @@ resource "hcloud_server" "server4" {
 
   firewall_ids = [
     hcloud_firewall.internal.id,
+    hcloud_firewall.icmp.id,
     hcloud_firewall.ssh_knocking.id,
     hcloud_firewall.cloudflare.id,
   ]
@@ -80,6 +82,7 @@ resource "hcloud_server" "server5" {
 
   firewall_ids = [
     hcloud_firewall.internal.id,
+    hcloud_firewall.icmp.id,
     hcloud_firewall.ssh_knocking.id,
     hcloud_firewall.vpn.id,
   ]
@@ -115,6 +118,7 @@ resource "hcloud_server" "server6" {
 
   firewall_ids = [
     hcloud_firewall.internal.id,
+    hcloud_firewall.icmp.id,
     hcloud_firewall.ssh_knocking.id
   ]
 
