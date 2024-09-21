@@ -7,9 +7,19 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "chore"
-      include: "scope"
     labels:
-      - "enhancement"
+      - "dependencies"
+      - "dependabot"
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
+  - package-ecosystem: "terraform"
+    open-pull-requests-limit: 10
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore"
+    labels:
+      - "dependencies"
+      - "dependabot"
