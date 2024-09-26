@@ -141,6 +141,6 @@ resource "hcloud_server" "server6" {
   }
 
   timeouts {
-    create = "20m"
+    create = "25m"
   }
 }
