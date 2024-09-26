@@ -109,7 +109,7 @@ resource "hcloud_server" "server5" {
 resource "hcloud_server" "server6" {
   count       = 0
   name        = var.server_name6
-  server_type = "cx11"
+  server_type = "cx22"
   location    = var.server_location
   image       = data.hcloud_image.snapshot1.id
   labels      = var.labels
@@ -138,5 +138,9 @@ resource "hcloud_server" "server6" {
 
   lifecycle {
     ignore_changes = [ssh_keys, network]
+  }
+
+  timeouts {
+    create = "20m"
   }
 }
