@@ -40,7 +40,6 @@ variable "vpn_port" {
   type        = number
   default     = 5200
   description = "VPN UDP Port"
-
   validation {
     condition     = can(regex("^([0-9]{1,5})$", var.vpn_port)) && tonumber(var.vpn_port) >= 0 && tonumber(var.vpn_port) <= 65535
     error_message = "The vpn_port must be a valid port number between 0 and 65535."
@@ -52,7 +51,6 @@ variable "knocking_ports_range" {
   default     = [5200, 5300]
   sensitive   = true
   description = "Knocking Ports Range"
-
   validation {
     condition     = can(regex("^([0-9]{1,5})$", var.knocking_ports_range[0])) && can(regex("^([0-9]{1,5})$", var.knocking_ports_range[1])) && var.knocking_ports_range[0] <= var.knocking_ports_range[1]
     error_message = "The knocking_ports_range must be a valid range of port numbers."
