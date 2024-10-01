@@ -48,10 +48,15 @@ variable "vpn_port" {
 }
 
 variable "knocking_ports_range" {
-  type        = string
-  default     = "5200-5300"
+  type        = list(number)
+  default     = [5200, 5300]
   sensitive   = true
   description = "Knocking Ports Range"
+
+  validation {
+    condition     = can(regex("^([0-9]{1,5})$", var.knocking_ports_range[0])) && can(regex("^([0-9]{1,5})$", var.knocking_ports_range[1])) && var.knocking_ports_range[0] <= var.knocking_ports_range[1]
+    error_message = "The knocking_ports_range must be a valid range of port numbers."
+  }
 }
 
 variable "ssh_public_key_path" {
