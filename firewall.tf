@@ -157,17 +157,18 @@ resource "hcloud_firewall" "ssh_knocking" {
     source_ips = ["0.0.0.0/0", "::/0"]
     port       = "22"
   }
+
   rule {
     direction  = "in"
     protocol   = "tcp"
     source_ips = ["0.0.0.0/0", "::/0"]
-    port       = var.knocking_port
+    port       = var.knocking_ports_range
   }
 
   rule {
     direction  = "in"
     protocol   = "udp"
     source_ips = ["0.0.0.0/0", "::/0"]
-    port       = var.knocking_port
+    port       = var.knocking_ports_range
   }
 }
