@@ -1,26 +1,33 @@
 variable "hcloud_token" {
-  sensitive = true
+  type        = string
+  sensitive   = true
+  description = "Hetzner Cloud API Token"
 }
 
 variable "service_name" {
   type        = string
   description = "Default Service/Org Name"
+  default     = "acme"
 }
 
 variable "server_name3" {
-  type = string
+  type    = string
+  default = "server3"
 }
 
 variable "server_name4" {
-  type = string
+  type    = string
+  default = "server4"
 }
 
 variable "server_name5" {
-  type = string
+  type    = string
+  default = "server5"
 }
 
 variable "server_name6" {
-  type = string
+  type    = string
+  default = "server6"
 }
 
 variable "server_location" {
@@ -30,16 +37,21 @@ variable "server_location" {
 }
 
 variable "vpn_port" {
-  type        = string
-  default     = "5200"
+  type        = number
+  default     = 5200
   description = "VPN UDP Port"
+
+  validation {
+    condition     = can(regex("^([0-9]{1,5})$", var.vpn_port)) && tonumber(var.vpn_port) >= 0 && tonumber(var.vpn_port) <= 65535
+    error_message = "The vpn_port must be a valid port number between 0 and 65535."
+  }
 }
 
-variable "knocking_port" {
+variable "knocking_ports_range" {
   type        = string
-  default     = "5200"
+  default     = "5200-5300"
   sensitive   = true
-  description = "Knocking Port"
+  description = "Knocking Ports Range"
 }
 
 variable "ssh_public_key_path" {
@@ -49,20 +61,30 @@ variable "ssh_public_key_path" {
 }
 
 variable "network_cidr_block1" {
-  type    = string
-  default = "10.10.0.0/16"
+  type        = string
+  default     = "10.10.0.0/16"
+  description = "CIDR block for the network"
+  validation {
+    condition     = can(regex("^([0-9]{1,3}\\.){3}[0-9]{1,3}/[0-9]{1,2}$", var.network_cidr_block1))
+    error_message = "The network_cidr_block1 must be a valid CIDR block."
+  }
 }
 
 variable "subnet_cidr_block1" {
-  type    = string
-  default = "10.10.10.0/24"
+  type        = string
+  default     = "10.10.10.0/24"
+  description = "CIDR block for the subnet"
+  validation {
+    condition     = can(regex("^([0-9]{1,3}\\.){3}[0-9]{1,3}/[0-9]{1,2}$", var.subnet_cidr_block1))
+    error_message = "The subnet_cidr_block1 must be a valid CIDR block."
+  }
 }
 
 variable "labels" {
-  type = map(string)
-  default = {
-    env = "test"
-    org = "test"
-  }
+  type        = map(string)
   description = "Labels for all resources"
+  default = {
+    env = "dev"
+    org = "acme"
+  }
 }
