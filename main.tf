@@ -72,7 +72,7 @@ resource "hcloud_server" "server4" {
 }
 
 resource "hcloud_server" "server6" {
-  count       = 0
+  count       = 1
   name        = var.server_name6
   server_type = "cx22"
   location    = var.server_location
