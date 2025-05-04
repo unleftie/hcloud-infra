@@ -11,7 +11,7 @@ resource "hcloud_server" "server3" {
   firewall_ids = [
     hcloud_firewall.internal.id,
     hcloud_firewall.icmp.id,
-    hcloud_firewall.ssh.id,
+    hcloud_firewall.ssh_knocking.id,
     hcloud_firewall.vpn.id,
     hcloud_firewall.web.id,
   ]
@@ -84,7 +84,7 @@ resource "hcloud_server" "server5" {
   firewall_ids = [
     hcloud_firewall.internal.id,
     hcloud_firewall.icmp.id,
-    hcloud_firewall.ssh.id,
+    hcloud_firewall.ssh_knocking.id,
     hcloud_firewall.web.id,
   ]
 
@@ -108,7 +108,7 @@ resource "hcloud_server" "server5" {
 }
 
 resource "hcloud_server" "server6" {
-  count       = 0
+  count       = 1
   name        = var.server_name6
   server_type = "cx22"
   location    = var.server_location
