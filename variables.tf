@@ -36,13 +36,14 @@ variable "server_location" {
   description = "Default Server Location"
 }
 
-variable "vpn_port" {
-  type        = number
-  default     = 5200
-  description = "VPN UDP Port"
+variable "vpn_ports" {
+  type        = list(number)
+  default     = [5200]
+  description = "VPN UDP Ports"
+
   validation {
-    condition     = can(regex("^([0-9]{1,5})$", var.vpn_port)) && tonumber(var.vpn_port) >= 0 && tonumber(var.vpn_port) <= 65535
-    error_message = "The vpn_port must be a valid port number between 0 and 65535."
+    condition     = length([for port in var.vpn_ports : port if port >= 0 && port <= 65535]) == length(var.vpn_ports)
+    error_message = "All vpn_ports must be valid port numbers between 0 and 65535."
   }
 }
 
