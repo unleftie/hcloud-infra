@@ -20,11 +20,6 @@ variable "server_name4" {
   default = "server4"
 }
 
-variable "server_name5" {
-  type    = string
-  default = "server5"
-}
-
 variable "server_name6" {
   type    = string
   default = "server6"

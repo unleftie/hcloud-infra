@@ -17,7 +17,7 @@ terraform apply -var="hcloud_token=your-hcloud-token"
 
 | Name                                                            | Version |
 | --------------------------------------------------------------- | ------- |
-| <a name="requirement_hcloud"></a> [hcloud](#requirement_hcloud) | 1.48.1  |
+| <a name="requirement_hcloud"></a> [hcloud](#requirement_hcloud) | 1.50.1  |
 
 ## Inputs
 
@@ -30,12 +30,11 @@ terraform apply -var="hcloud_token=your-hcloud-token"
 | <a name="input_server_location"></a> [server_location](#input_server_location)                | Default Server Location              | `string`       | `"nbg1"`                                                 |    no    |
 | <a name="input_server_name3"></a> [server_name3](#input_server_name3)                         | n/a                                  | `string`       | `"server3"`                                              |    no    |
 | <a name="input_server_name4"></a> [server_name4](#input_server_name4)                         | n/a                                  | `string`       | `"server4"`                                              |    no    |
-| <a name="input_server_name5"></a> [server_name5](#input_server_name5)                         | n/a                                  | `string`       | `"server5"`                                              |    no    |
 | <a name="input_server_name6"></a> [server_name6](#input_server_name6)                         | n/a                                  | `string`       | `"server6"`                                              |    no    |
 | <a name="input_service_name"></a> [service_name](#input_service_name)                         | Default Service/Org Name             | `string`       | `"acme"`                                                 |    no    |
 | <a name="input_ssh_public_key_path"></a> [ssh_public_key_path](#input_ssh_public_key_path)    | Name of existing SSH public key file | `string`       | `"id_rsa.pub"`                                           |    no    |
 | <a name="input_subnet_cidr_block1"></a> [subnet_cidr_block1](#input_subnet_cidr_block1)       | CIDR block for the subnet            | `string`       | `"10.10.10.0/24"`                                        |    no    |
-| <a name="input_vpn_port"></a> [vpn_port](#input_vpn_port)                                     | VPN UDP Port                         | `number`       | `5200`                                                   |    no    |
+| <a name="input_vpn_ports"></a> [vpn_ports](#input_vpn_ports)                                  | VPN UDP Ports                        | `list(number)` | <pre>[<br/> 5200<br/>]</pre>                             |    no    |
 
 <!-- END_TF_DOCS -->
 
