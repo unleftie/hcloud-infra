@@ -17,7 +17,7 @@ terraform apply -var="hcloud_token=your-hcloud-token"
 
 | Name                                                            | Version |
 | --------------------------------------------------------------- | ------- |
-| <a name="requirement_hcloud"></a> [hcloud](#requirement_hcloud) | 1.50.1  |
+| <a name="requirement_hcloud"></a> [hcloud](#requirement_hcloud) | 1.51.0  |
 
 ## Inputs
 
@@ -29,7 +29,6 @@ terraform apply -var="hcloud_token=your-hcloud-token"
 | <a name="input_network_cidr_block1"></a> [network_cidr_block1](#input_network_cidr_block1)    | CIDR block for the network           | `string`       | `"10.10.0.0/16"`                                         |    no    |
 | <a name="input_server_location"></a> [server_location](#input_server_location)                | Default Server Location              | `string`       | `"nbg1"`                                                 |    no    |
 | <a name="input_server_name3"></a> [server_name3](#input_server_name3)                         | n/a                                  | `string`       | `"server3"`                                              |    no    |
-| <a name="input_server_name4"></a> [server_name4](#input_server_name4)                         | n/a                                  | `string`       | `"server4"`                                              |    no    |
 | <a name="input_server_name6"></a> [server_name6](#input_server_name6)                         | n/a                                  | `string`       | `"server6"`                                              |    no    |
 | <a name="input_service_name"></a> [service_name](#input_service_name)                         | Default Service/Org Name             | `string`       | `"acme"`                                                 |    no    |
 | <a name="input_ssh_public_key_path"></a> [ssh_public_key_path](#input_ssh_public_key_path)    | Name of existing SSH public key file | `string`       | `"id_rsa.pub"`                                           |    no    |
