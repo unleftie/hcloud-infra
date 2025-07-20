@@ -5,7 +5,7 @@ resource "hcloud_server" "server3" {
   location    = var.server_location
   image       = "debian-12"
   labels      = var.labels
-  ssh_keys    = data.hcloud_ssh_keys.this.ssh_keys.*.id
+  ssh_keys    = [for key in data.hcloud_ssh_keys.this.ssh_keys : key.id]
   keep_disk   = true
 
   firewall_ids = [
@@ -40,7 +40,7 @@ resource "hcloud_server" "server6" {
   location    = var.server_location
   image       = data.hcloud_image.snapshot1.id
   labels      = var.labels
-  ssh_keys    = data.hcloud_ssh_keys.this.ssh_keys.*.id
+  ssh_keys    = [for key in data.hcloud_ssh_keys.this.ssh_keys : key.id]
   keep_disk   = true
 
   firewall_ids = [
