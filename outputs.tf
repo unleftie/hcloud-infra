@@ -1,23 +1,19 @@
-output "ip4" {
-  description = "Servers ipv4 addresses"
+output "server3" {
+  description = "Server 3 outputs"
   value = {
-    try(hcloud_server.server3[0].name, var.server_name3) = try(hcloud_server.server3[0].ipv4_address, null)
-    try(hcloud_server.server6[0].name, var.server_name6) = try(hcloud_server.server6[0].ipv4_address, null)
+    id           = try(hcloud_server.server3[0].id, null)
+    ipv4_address = try(hcloud_server.server3[0].ipv4_address, null)
+    ipv6_address = try(hcloud_server.server3[0].ipv6_address, null)
+    private_ip   = try(one(hcloud_server.server3[0].network[*]).ip, null)
   }
 }
 
-output "ip6" {
-  description = "Servers ipv6 addresses"
+output "server6" {
+  description = "Server 6 outputs"
   value = {
-    try(hcloud_server.server3[0].name, var.server_name3) = try(hcloud_server.server3[0].ipv6_address, null)
-    try(hcloud_server.server6[0].name, var.server_name6) = try(hcloud_server.server6[0].ipv6_address, null)
-  }
-}
-
-output "private_ip4" {
-  description = "Servers private ipv4 addresses"
-  value = {
-    try(hcloud_server.server3[0].name, var.server_name3) = try(one(hcloud_server.server3[0].network[*]).ip, null)
-    try(hcloud_server.server6[0].name, var.server_name6) = try(one(hcloud_server.server6[0].network[*]).ip, null)
+    id           = try(hcloud_server.server6[0].id, null)
+    ipv4_address = try(hcloud_server.server6[0].ipv4_address, null)
+    ipv6_address = try(hcloud_server.server6[0].ipv6_address, null)
+    private_ip   = try(one(hcloud_server.server6[0].network[*]).ip, null)
   }
 }

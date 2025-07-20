@@ -1,8 +1,18 @@
+resource "hcloud_ssh_key" "ssh" {
+  name       = "${var.service_name}-ssh"
+  labels     = var.labels
+  public_key = var.ssh_public_key_path
+
+  lifecycle {
+    ignore_changes = [public_key, labels]
+  }
+}
+
 resource "hcloud_server" "server3" {
   count = 1
 
   name        = var.server_name3
-  server_type = "cax11"
+  server_type = "cax11" # arm64
   location    = var.server_location
   image       = "debian-12"
   ssh_keys    = [for key in data.hcloud_ssh_keys.this.ssh_keys : key.id]
@@ -33,14 +43,13 @@ resource "hcloud_server" "server3" {
   }
 
   labels = var.labels
-
 }
 
 resource "hcloud_server" "server6" {
   count = 1
 
   name        = var.server_name6
-  server_type = "cx22"
+  server_type = "cx22" # amd64
   location    = var.server_location
   image       = "debian-12"
   ssh_keys    = [for key in data.hcloud_ssh_keys.this.ssh_keys : key.id]
