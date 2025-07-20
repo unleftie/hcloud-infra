@@ -1,5 +1,6 @@
 resource "hcloud_server" "server3" {
-  count       = 1
+  count = 1
+
   name        = var.server_name3
   server_type = "cax11"
   location    = var.server_location
@@ -9,8 +10,8 @@ resource "hcloud_server" "server3" {
 
   firewall_ids = [
     hcloud_firewall.internal.id,
-    hcloud_firewall.ssh_knocking.id,
     hcloud_firewall.vpn.id,
+    hcloud_firewall.ssh_knocking.id,
   ]
 
   network {
@@ -36,7 +37,8 @@ resource "hcloud_server" "server3" {
 }
 
 resource "hcloud_server" "server6" {
-  count       = 1
+  count = 1
+
   name        = var.server_name6
   server_type = "cx22"
   location    = var.server_location

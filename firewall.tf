@@ -1,40 +1,3 @@
-resource "hcloud_firewall" "all" {
-  name   = "${var.service_name}-firewall-all"
-  labels = var.labels
-
-  rule {
-    direction  = "in"
-    protocol   = "icmp"
-    source_ips = ["0.0.0.0/0", "::/0"]
-  }
-
-  rule {
-    direction  = "in"
-    protocol   = "tcp"
-    port       = "any"
-    source_ips = ["0.0.0.0/0", "::/0"]
-  }
-
-  rule {
-    direction  = "in"
-    protocol   = "udp"
-    port       = "any"
-    source_ips = ["0.0.0.0/0", "::/0"]
-  }
-
-  rule {
-    direction  = "in"
-    protocol   = "gre"
-    source_ips = ["0.0.0.0/0", "::/0"]
-  }
-
-  rule {
-    direction  = "in"
-    protocol   = "esp"
-    source_ips = ["0.0.0.0/0", "::/0"]
-  }
-}
-
 resource "hcloud_firewall" "internal" {
   name   = "${var.service_name}-firewall-internal"
   labels = var.labels
@@ -69,17 +32,6 @@ resource "hcloud_firewall" "internal" {
     direction  = "in"
     protocol   = "esp"
     source_ips = [var.network_cidr_block1]
-  }
-}
-
-resource "hcloud_firewall" "icmp" {
-  name   = "${var.service_name}-firewall-icmp"
-  labels = var.labels
-
-  rule {
-    direction  = "in"
-    protocol   = "icmp"
-    source_ips = ["0.0.0.0/0", "::/0"]
   }
 }
 

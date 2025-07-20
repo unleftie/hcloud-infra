@@ -1,7 +1,8 @@
 resource "hcloud_network" "network1" {
   name     = "${var.service_name}-network1"
-  labels   = var.labels
   ip_range = var.network_cidr_block1
+
+  labels = var.labels
 }
 
 resource "hcloud_network_subnet" "subnet1" {
