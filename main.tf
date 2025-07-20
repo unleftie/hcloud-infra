@@ -4,7 +4,6 @@ resource "hcloud_server" "server3" {
   server_type = "cax11"
   location    = var.server_location
   image       = "debian-12"
-  labels      = var.labels
   ssh_keys    = [for key in data.hcloud_ssh_keys.this.ssh_keys : key.id]
   keep_disk   = true
 
@@ -31,6 +30,9 @@ resource "hcloud_server" "server3" {
   lifecycle {
     ignore_changes = [ssh_keys, image, network]
   }
+
+  labels = var.labels
+
 }
 
 resource "hcloud_server" "server6" {
@@ -38,8 +40,7 @@ resource "hcloud_server" "server6" {
   name        = var.server_name6
   server_type = "cx22"
   location    = var.server_location
-  image       = data.hcloud_image.snapshot1.id
-  labels      = var.labels
+  image       = "debian-12"
   ssh_keys    = [for key in data.hcloud_ssh_keys.this.ssh_keys : key.id]
   keep_disk   = true
 
@@ -63,10 +64,8 @@ resource "hcloud_server" "server6" {
   ]
 
   lifecycle {
-    ignore_changes = [ssh_keys, network]
+    ignore_changes = [ssh_keys, image, network]
   }
 
-  timeouts {
-    create = "25m"
-  }
+  labels = var.labels
 }

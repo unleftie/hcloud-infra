@@ -1,4 +1,3 @@
-
 resource "hcloud_firewall" "all" {
   name   = "${var.service_name}-firewall-all"
   labels = var.labels
@@ -100,25 +99,6 @@ resource "hcloud_firewall" "vpn" {
   }
 }
 
-resource "hcloud_firewall" "web" {
-  name   = "${var.service_name}-firewall-web"
-  labels = var.labels
-
-  rule {
-    direction  = "in"
-    protocol   = "tcp"
-    source_ips = ["0.0.0.0/0", "::/0"]
-    port       = "80"
-  }
-
-  rule {
-    direction  = "in"
-    protocol   = "tcp"
-    source_ips = ["0.0.0.0/0", "::/0"]
-    port       = "443"
-  }
-}
-
 resource "hcloud_firewall" "ssh_knocking" {
   name   = "${var.service_name}-firewall-ssh-knocking"
   labels = var.labels
@@ -134,13 +114,13 @@ resource "hcloud_firewall" "ssh_knocking" {
     direction  = "in"
     protocol   = "tcp"
     source_ips = ["0.0.0.0/0", "::/0"]
-    port       = local.knocking_ports
+    port       = join("-", tolist(var.knocking_ports_range))
   }
 
   rule {
     direction  = "in"
     protocol   = "udp"
     source_ips = ["0.0.0.0/0", "::/0"]
-    port       = local.knocking_ports
+    port       = join("-", tolist(var.knocking_ports_range))
   }
 }
