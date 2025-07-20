@@ -119,26 +119,6 @@ resource "hcloud_firewall" "web" {
   }
 }
 
-# see https://www.cloudflare.com/ips/
-resource "hcloud_firewall" "cloudflare" {
-  name   = "${var.service_name}-firewall-cloudflare"
-  labels = var.labels
-
-  rule {
-    direction  = "in"
-    protocol   = "tcp"
-    source_ips = concat(split("\n", data.http.cloudflare_ips_v4.response_body), split("\n", data.http.cloudflare_ips_v6.response_body))
-    port       = "80"
-  }
-
-  rule {
-    direction  = "in"
-    protocol   = "tcp"
-    source_ips = concat(split("\n", data.http.cloudflare_ips_v4.response_body), split("\n", data.http.cloudflare_ips_v6.response_body))
-    port       = "443"
-  }
-}
-
 resource "hcloud_firewall" "ssh_knocking" {
   name   = "${var.service_name}-firewall-ssh-knocking"
   labels = var.labels

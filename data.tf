@@ -1,11 +1,3 @@
-data "http" "cloudflare_ips_v4" {
-  url = "https://www.cloudflare.com/ips-v4"
-}
-
-data "http" "cloudflare_ips_v6" {
-  url = "https://www.cloudflare.com/ips-v6"
-}
-
 data "hcloud_ssh_keys" "this" {
   with_selector = "managed=terraform"
 }

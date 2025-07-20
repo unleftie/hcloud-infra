@@ -10,10 +10,8 @@ resource "hcloud_server" "server3" {
 
   firewall_ids = [
     hcloud_firewall.internal.id,
-    hcloud_firewall.icmp.id,
     hcloud_firewall.ssh_knocking.id,
     hcloud_firewall.vpn.id,
-    hcloud_firewall.web.id,
   ]
 
   network {
