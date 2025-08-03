@@ -4,6 +4,10 @@ terraform {
 
     workspaces {
       project = "hcloud-infra"
+
+      tags = {
+        layer = "networking"
+      }
     }
   }
 }
