@@ -35,22 +35,6 @@ resource "hcloud_firewall" "internal" {
   }
 }
 
-resource "hcloud_firewall" "vpn" {
-  name   = "${var.service_name}-firewall-vpn"
-  labels = var.labels
-
-  dynamic "rule" {
-    for_each = var.vpn_ports
-
-    content {
-      direction  = "in"
-      protocol   = "udp"
-      source_ips = ["0.0.0.0/0", "::/0"]
-      port       = rule.value
-    }
-  }
-}
-
 resource "hcloud_firewall" "ssh_knocking" {
   name   = "${var.service_name}-firewall-ssh-knocking"
   labels = var.labels
