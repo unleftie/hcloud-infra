@@ -47,7 +47,7 @@ resource "hcloud_zone_rrset" "api1_test" {
 
 resource "hcloud_zone_rrset" "front1" {
   zone = hcloud_zone.zone1.name
-  name = "front"
+  name = "@"
   type = "CNAME"
 
   ttl = 300
@@ -65,7 +65,7 @@ resource "hcloud_zone_rrset" "front1" {
 
 resource "hcloud_zone_rrset" "front1_test" {
   zone = hcloud_zone.zone1.name
-  name = "front-test"
+  name = "test"
   type = "CNAME"
 
   ttl = 300
