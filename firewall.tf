@@ -76,3 +76,21 @@ resource "hcloud_firewall" "ssh_knocking" {
     port       = join("-", tolist(var.knocking_ports_range))
   }
 }
+
+resource "hcloud_firewall" "web" {
+  name   = "${var.service_name}-firewall-web"
+  labels = var.labels
+
+  rule {
+    direction  = "in"
+    protocol   = "tcp"
+    source_ips = ["0.0.0.0/0", "::/0"]
+    port       = "80"
+  }
+  rule {
+    direction  = "in"
+    protocol   = "tcp"
+    source_ips = ["0.0.0.0/0", "::/0"]
+    port       = "443"
+  }
+}

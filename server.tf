@@ -46,10 +46,10 @@ resource "hcloud_server" "server3" {
 }
 
 resource "hcloud_server" "server6" {
-  count = 0
+  count = 1
 
   name        = var.server_name6
-  server_type = "cx22" # amd64
+  server_type = "cx23" # amd64
   location    = var.server_location
   image       = "debian-12"
   ssh_keys    = [for key in data.hcloud_ssh_keys.this.ssh_keys : key.id]
@@ -57,6 +57,8 @@ resource "hcloud_server" "server6" {
 
   firewall_ids = [
     hcloud_firewall.internal.id,
+    hcloud_firewall.ssh_knocking.id,
+    hcloud_firewall.web.id,
   ]
 
   network {
