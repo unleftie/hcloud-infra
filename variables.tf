@@ -26,11 +26,6 @@ variable "server_location" {
   description = "Default Server Location"
 }
 
-variable "zone1_name" {
-  type        = string
-  description = "Name of the DNS zone 1"
-}
-
 variable "vpn_ports" {
   type        = list(number)
   default     = [5200]
@@ -87,14 +82,4 @@ variable "labels" {
     env = "dev"
     org = "acme"
   }
-}
-
-variable "front1_cname" {
-  type        = string
-  description = "CNAME record for front1"
-}
-
-variable "front1_test_cname" {
-  type        = string
-  description = "CNAME record for front1 test"
 }
