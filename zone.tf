@@ -26,3 +26,21 @@ resource "hcloud_zone_rrset" "api1" {
 
   labels = var.labels
 }
+
+resource "hcloud_zone_rrset" "api1_test" {
+  zone = hcloud_zone.zone1.name
+  name = "api-test"
+  type = "A"
+
+  ttl = 300
+
+  records = [
+    {
+      value = try(hcloud_server.server6[0].ipv4_address, null), comment = "api test server 1"
+    },
+  ]
+
+  change_protection = false
+
+  labels = var.labels
+}
