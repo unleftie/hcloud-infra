@@ -88,3 +88,13 @@ variable "labels" {
     org = "acme"
   }
 }
+
+variable "front1_cname" {
+  type        = string
+  description = "CNAME record for front1"
+}
+
+variable "front1_test_cname" {
+  type        = string
+  description = "CNAME record for front1 test"
+}
