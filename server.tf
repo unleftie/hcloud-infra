@@ -25,8 +25,8 @@ resource "hcloud_server" "server3" {
   ]
 
   network {
-    network_id = hcloud_network.network1.id
-    ip         = "10.80.80.3"
+    subnet_id = hcloud_network_subnet.subnet1.id
+    ip        = "10.80.80.3"
   }
 
   public_net {
@@ -62,8 +62,8 @@ resource "hcloud_server" "server6" {
   ]
 
   network {
-    network_id = hcloud_network.network1.id
-    ip         = "10.80.80.6"
+    subnet_id = hcloud_network_subnet.subnet1.id
+    ip        = "10.80.80.6"
   }
 
   public_net {
