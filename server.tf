@@ -34,12 +34,8 @@ resource "hcloud_server" "server3" {
     ipv6_enabled = true
   }
 
-  depends_on = [
-    hcloud_network_subnet.subnet1
-  ]
-
   lifecycle {
-    ignore_changes = [ssh_keys, image, network]
+    ignore_changes = [ssh_keys, image]
   }
 
   labels = var.labels
@@ -71,12 +67,8 @@ resource "hcloud_server" "server6" {
     ipv6_enabled = true
   }
 
-  depends_on = [
-    hcloud_network_subnet.subnet1
-  ]
-
   lifecycle {
-    ignore_changes = [ssh_keys, image, network]
+    ignore_changes = [ssh_keys, image]
   }
 
   labels = var.labels
