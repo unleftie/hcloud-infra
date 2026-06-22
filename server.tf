@@ -25,6 +25,7 @@ resource "hcloud_server" "server3" {
   ]
 
   network {
+    alias_ips = []
     subnet_id = hcloud_network_subnet.subnet1.id
     ip        = "10.80.80.3"
   }
@@ -58,6 +59,7 @@ resource "hcloud_server" "server6" {
   ]
 
   network {
+    alias_ips = []
     subnet_id = hcloud_network_subnet.subnet1.id
     ip        = "10.80.80.6"
   }
