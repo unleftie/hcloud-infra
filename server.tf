@@ -43,7 +43,7 @@ resource "hcloud_server" "server3" {
 }
 
 resource "hcloud_server" "server6" {
-  count = 1
+  count = 0
 
   name        = var.server_name6
   server_type = "cx23" # amd64
